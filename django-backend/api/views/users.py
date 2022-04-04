@@ -15,13 +15,21 @@ class SignUp(generics.CreateAPIView):
         now = datetime.datetime.now()
         html = "<html><body>It is now %s.</body></html>" % now
         return HttpResponse(html)
-        
+         
     def post(self, request):
+        print("- - - - - I AM IN SIGN UP POST - - - - - ")
         new_user = UserSerializer(data=request.data)
+
+        print("- - - - - NEW _ USER  - - - - - ")
+        print(new_user)
+
         if new_user.is_valid():
+            print("- - - - - I AM IN IF  - - - - - ")
             new_user.save()
+            print("- - - - - NEW USER SAVED  - - - - - ")
             return Response({ 'user': new_user.data }, status=status.HTTP_201_CREATED)
         else:
+            print("- - - - - I AM IN ELSE  - - - - - ")
             return Response(new_user.errors, status=status.HTTP_400_BAD_REQUEST) 
 
 
