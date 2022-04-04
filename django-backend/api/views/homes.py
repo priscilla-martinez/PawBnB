@@ -6,23 +6,14 @@ from ..serializers.home import HomeSerializer
 from ..models.home import Home
 
 
-
 class HomesView(APIView):
+    authentication_classes = ()
+    permission_classes = ()
+
     def get(self, request):
         homes = Home.objects
         data = HomeSerializer(homes, many=True).data
         return Response(data)
-
-    def post(self, request):
-        request.data['owner'] = request.user.id
-        home = HomeSerializer(data=request.data)
-        if home.is_valid():
-            home.save()
-            return Response(home.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(home.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 
 class HomeView(APIView):
@@ -45,4 +36,13 @@ class HomeView(APIView):
             return Response(updated_home.data)
         else: 
             return Response(updated_home.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request):
+        request.data['owner'] = request.user.id
+        home = HomeSerializer(data=request.data)
+        if home.is_valid():
+            home.save()
+            return Response(home.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(home.errors, status=status.HTTP_400_BAD_REQUEST)
 
