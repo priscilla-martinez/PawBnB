@@ -1,14 +1,13 @@
 import React from 'react'
 import './LogIn.css'
 import {Route, Link, Routes, Navigate, useNavigate} from "react-router-dom"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 
 function LogIn() {
 
   const [user, setUser] = useState({email: "", password:""})
   const [token, setToken] = useState("")
-  // const navigate = useNavigate();
 
   const handleChange = (event) => {
     event.persist();
@@ -25,6 +24,7 @@ function LogIn() {
   const handleSubmit = (event) => {
     
     event.preventDefault()
+
     fetch("http://127.0.0.1:8000/sign-in/", {
       headers: {
         "Content-Type" : "application/json",
@@ -34,8 +34,6 @@ function LogIn() {
     })
     .then((response) => response.json())
     .then((data) => setToken(data.user.token))
-    .then((data) => console.log(data))
-    //navigate('/log-in')
   }
 
 
