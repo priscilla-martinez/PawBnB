@@ -35,7 +35,7 @@ function LogIn() {
     .then((response) => response.json())
     .then((data) => setToken(data.user.token))
     .then((data) => console.log(data))
-    // navigate('/log-in')
+    //navigate('/log-in')
   }
 
 
