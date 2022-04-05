@@ -1,16 +1,23 @@
 import React from 'react'
-import {Route, Link, Routes, Navigate} from "react-router-dom"
+import {Route, Link, Routes, useNavigate} from "react-router-dom"
 import './Home.css' 
-import Header from '../Header/Header'
 import Card from '../Card/Card'
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  const searchPage = () => {
+    navigate('/search')
+  } 
+
+
   return (
     <div className='homePage'>
 
       <div className='main_image'>
         <h1>Let your curiosity do the booking</h1>
-        <button>Explore</button>
+        <button onClick={searchPage}>Explore</button>
       </div>
 
       <div className='inspiration'>
