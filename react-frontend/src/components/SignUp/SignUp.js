@@ -22,18 +22,15 @@ function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("Handle Submit")
-    console.log(user)
-
     fetch("http://127.0.0.1:8000/sign-up/", {
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
       },
       method: "POST",
       body: JSON.stringify(user)
     })
     .then((response) => response.json())
-    .then((data) => console.log("User ID: ", data.user.id))
+    .then((data) => console.log(data))
   }
 
 
