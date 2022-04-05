@@ -1,12 +1,13 @@
 import React from 'react'
 import './SignUp.css'
-import {Route, Link, Routes, Navigate} from "react-router-dom"
+import {Route, Link, Routes, Navigate, useNavigate} from "react-router-dom"
 import { useState } from "react"
 
 
 function SignUp() {
 
   const [user, setUser] = useState({email: "", password:""})
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     event.persist();
@@ -21,6 +22,7 @@ function SignUp() {
   }
 
   const handleSubmit = (event) => {
+    
     event.preventDefault()
     fetch("http://127.0.0.1:8000/sign-up/", {
       headers: {
@@ -31,6 +33,7 @@ function SignUp() {
     })
     .then((response) => response.json())
     .then((data) => console.log(data))
+    navigate('/log-in')
   }
 
 
