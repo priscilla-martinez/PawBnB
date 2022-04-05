@@ -1,0 +1,33 @@
+.header{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
+    top: 0;
+    background-color: white;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+    z-index: 100;
+}
+.header_icon{
+    object-fit: contain;
+    height: 70px; 
+}
+
+.header_options{
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px; 
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
