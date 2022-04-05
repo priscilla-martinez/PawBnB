@@ -36,6 +36,7 @@
 
 .main_image > button:hover {
     background-color: lightgray;
+    cursor: pointer;
 }
 
 .inspiration {

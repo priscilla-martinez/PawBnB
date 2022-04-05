@@ -13,6 +13,7 @@
 
 .home_types > p:hover{
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .search_filters{
@@ -31,6 +32,7 @@
     height: 3em;
     width: 7em;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .listHomes {
@@ -64,8 +66,8 @@
     width: 40vw;
 }
 
-.searchResult__infoTop > h3 {
-    font-weight: 300;
+.listHomes__infoTop > h3 {
+    font-weight: 400;
     margin-top: 10px;
 }
 

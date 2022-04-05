@@ -6,12 +6,15 @@
     top: 0;
     background-color: white;
     padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-bottom: 1px solid lightgray;
     z-index: 100;
 }
 .header_icon{
     object-fit: contain;
     height: 70px; 
+    cursor: pointer;
 }
 
 .header_options{
@@ -19,6 +22,11 @@
     align-items: center;
     justify-content: space-around;
     gap: 20px; 
+}
+
+.header_options > a:hover{
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 a:link {
