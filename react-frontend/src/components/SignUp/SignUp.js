@@ -1,8 +1,42 @@
 import React from 'react'
 import './SignUp.css'
 import {Route, Link, Routes, Navigate} from "react-router-dom"
+import { useState } from "react"
+
 
 function SignUp() {
+
+  const [user, setUser] = useState({email: "", password:""})
+
+  const handleChange = (event) => {
+    event.persist();
+    console.log("Handle Change")
+    setUser((prevUser) => {
+      const editedUser = {
+        ...prevUser,
+        [event.target.name]: event.target.value,
+      }
+      return editedUser
+    })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("Handle Submit")
+    console.log(user)
+
+    fetch("http://127.0.0.1:8000/sign-up/", {
+      headers: {
+        "Content-Type" : "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify(user)
+    })
+    .then((response) => response.json())
+    .then((data) => console.log("User ID: ", data.user.id))
+  }
+
+
   return (
       <div className='sign_up_page'>
         <div className='sign_up_container'>
@@ -11,9 +45,9 @@ function SignUp() {
           <h2 className='welcome'>Welcome to Pawbnb</h2>
 
           <form className='sign_up_form'>
-            <input className='sign_up_email_input' type="email" name="email" placeholder="Email"/>
-            <input className='sign_up_ps_input' type="password" name="password" placeholder="Password"/>
-            <input className='sign_up_submit' type="submit" value="Submit"/>
+            <input className='sign_up_email_input' type="email" name="email" placeholder="Email" onChange={handleChange}/>
+            <input className='sign_up_ps_input' type="password" name="password" placeholder="Password" onChange={handleChange}/>
+            <input className='sign_up_submit' type="submit" value="Submit" onClick={handleSubmit}/>
           </form>
         </div>
 
