@@ -1,0 +1,18 @@
+.header{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    position: sticky; 
+    top: 0;
+}
+.header_icon{
+    object-fit: contain;
+    height: 70px; 
+}
+
+.header_options{
+    display: flex; 
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px; 
+}
